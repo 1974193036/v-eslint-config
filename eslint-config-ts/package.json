@@ -1,0 +1,26 @@
+{
+  "name": "@shishuaiyun/eslint-config-ts",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">=7.4.0",
+    "typescript": ">=3.9"
+  },
+  "dependencies": {
+    "@shishuaiyun/eslint-config-basic": "^0.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
