@@ -3,11 +3,10 @@ import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
 import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 
-export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
-  const {
-    isInEditor = false,
-    overrides = {},
-  } = options
+export function javascript(
+  options: OptionsIsInEditor & OptionsOverrides = {}
+): ConfigItem[] {
+  const { isInEditor = false, overrides = {} } = options
 
   return [
     {
@@ -19,34 +18,40 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           ...globals.node,
           document: 'readonly',
           navigator: 'readonly',
-          window: 'readonly',
+          window: 'readonly'
         },
         parserOptions: {
           ecmaFeatures: {
-            jsx: true,
+            jsx: true
           },
           ecmaVersion: 2022,
-          sourceType: 'module',
+          sourceType: 'module'
         },
-        sourceType: 'module',
+        sourceType: 'module'
       },
       linterOptions: {
-        reportUnusedDisableDirectives: true,
+        reportUnusedDisableDirectives: true
       },
       name: 'shishuaiyun:javascript',
       plugins: {
-        'antfu': pluginAntfu,
-        'unused-imports': pluginUnusedImports,
+        antfu: pluginAntfu,
+        'unused-imports': pluginUnusedImports
       },
       rules: {
-        'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
+        'accessor-pairs': [
+          'error',
+          { enforceForClassMembers: true, setWithoutGet: true }
+        ],
         'array-callback-return': 'error',
         'block-scoped-var': 'error',
         'constructor-super': 'error',
         'default-case-last': 'error',
         'dot-notation': ['error', { allowKeywords: true }],
-        'eqeqeq': ['error', 'smart'],
-        'new-cap': ['error', { capIsNew: false, newIsCap: true, properties: true }],
+        eqeqeq: ['error', 'smart'],
+        'new-cap': [
+          'error',
+          { capIsNew: false, newIsCap: true, properties: true }
+        ],
         'no-alert': 'error',
         'no-array-constructor': 'error',
         'no-async-promise-executor': 'error',
@@ -101,15 +106,31 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-restricted-globals': [
           'error',
           { message: 'Use `globalThis` instead.', name: 'global' },
-          { message: 'Use `globalThis` instead.', name: 'self' },
+          { message: 'Use `globalThis` instead.', name: 'self' }
         ],
         'no-restricted-properties': [
           'error',
-          { message: 'Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.', property: '__proto__' },
-          { message: 'Use `Object.defineProperty` instead.', property: '__defineGetter__' },
-          { message: 'Use `Object.defineProperty` instead.', property: '__defineSetter__' },
-          { message: 'Use `Object.getOwnPropertyDescriptor` instead.', property: '__lookupGetter__' },
-          { message: 'Use `Object.getOwnPropertyDescriptor` instead.', property: '__lookupSetter__' },
+          {
+            message:
+              'Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.',
+            property: '__proto__'
+          },
+          {
+            message: 'Use `Object.defineProperty` instead.',
+            property: '__defineGetter__'
+          },
+          {
+            message: 'Use `Object.defineProperty` instead.',
+            property: '__defineSetter__'
+          },
+          {
+            message: 'Use `Object.getOwnPropertyDescriptor` instead.',
+            property: '__lookupGetter__'
+          },
+          {
+            message: 'Use `Object.getOwnPropertyDescriptor` instead.',
+            property: '__lookupSetter__'
+          }
         ],
         'no-restricted-syntax': [
           'error',
@@ -117,7 +138,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           'LabeledStatement',
           'WithStatement',
           'TSEnumDeclaration[const=true]',
-          'TSExportAssignment',
+          'TSExportAssignment'
         ],
         'no-self-assign': ['error', { props: true }],
         'no-self-compare': 'error',
@@ -136,18 +157,27 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-unreachable-loop': 'error',
         'no-unsafe-finally': 'error',
         'no-unsafe-negation': 'error',
-        'no-unused-expressions': ['error', {
-          allowShortCircuit: true,
-          allowTaggedTemplates: true,
-          allowTernary: true,
-        }],
-        'no-unused-vars': ['error', {
-          args: 'none',
-          caughtErrors: 'none',
-          ignoreRestSiblings: true,
-          vars: 'all',
-        }],
-        'no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
+        'no-unused-expressions': [
+          'error',
+          {
+            allowShortCircuit: true,
+            allowTaggedTemplates: true,
+            allowTernary: true
+          }
+        ],
+        'no-unused-vars': [
+          'error',
+          {
+            args: 'none',
+            caughtErrors: 'none',
+            ignoreRestSiblings: true,
+            vars: 'all'
+          }
+        ],
+        'no-use-before-define': [
+          'error',
+          { classes: false, functions: false, variables: true }
+        ],
         'no-useless-backreference': 'error',
         'no-useless-call': 'error',
         'no-useless-catch': 'error',
@@ -162,23 +192,23 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           'always',
           {
             avoidQuotes: true,
-            ignoreConstructors: false,
-          },
+            ignoreConstructors: false
+          }
         ],
         'one-var': ['error', { initialized: 'never' }],
         'prefer-arrow-callback': [
           'error',
           {
             allowNamedFunctions: false,
-            allowUnboundThis: true,
-          },
+            allowUnboundThis: true
+          }
         ],
         'prefer-const': [
           'error',
           {
             destructuring: 'all',
-            ignoreReadBeforeAssign: true,
-          },
+            ignoreReadBeforeAssign: true
+          }
         ],
         'prefer-exponentiation-operator': 'error',
         'prefer-promise-reject-errors': 'error',
@@ -193,8 +223,8 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
             ignoreCase: false,
             ignoreDeclarationSort: true,
             ignoreMemberSort: false,
-            memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-          },
+            memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
+          }
         ],
 
         'symbol-description': 'error',
@@ -203,22 +233,65 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
 
         'unused-imports/no-unused-vars': [
           'error',
-          { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' },
+          {
+            args: 'after-used',
+            argsIgnorePattern: '^_',
+            vars: 'all',
+            varsIgnorePattern: '^_'
+          }
         ],
-        'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
+        'use-isnan': [
+          'error',
+          { enforceForIndexOf: true, enforceForSwitchCase: true }
+        ],
         'valid-typeof': ['error', { requireStringLiterals: true }],
         'vars-on-top': 'error',
-        'yoda': ['error', 'never'],
+        yoda: ['error', 'never'],
 
-        ...overrides,
-      },
+        // best-practice
+        semi: ['error', 'never'],
+        quotes: ['error', 'single'],
+        'consistent-return': 'off',
+        complexity: ['off', 11],
+        'no-multi-spaces': 'error',
+        'no-void': 'error',
+        'no-useless-escape': 'off',
+        'require-await': 'off',
+        'no-return-assign': 'off',
+        'operator-linebreak': ['error', 'before'],
+        'quote-props': ['error', 'consistent-as-needed'],
+        'no-param-reassign': 'off',
+        'array-bracket-spacing': ['error', 'never'],
+        'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+        'block-spacing': ['error', 'always'],
+        camelcase: 'off',
+        'comma-spacing': ['error', { before: false, after: true }],
+        'comma-style': ['error', 'last'],
+        'comma-dangle': ['error', 'always-multiline'],
+        'no-constant-condition': 'warn',
+        'func-call-spacing': ['off', 'never'],
+        'key-spacing': ['error', { beforeColon: false, afterColon: true }],
+        indent: [
+          'error',
+          2,
+          { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }
+        ],
+        'object-curly-spacing': ['error', 'always'],
+        'no-return-await': 'off',
+        'space-before-function-paren': ['error', 'never'],
+        'template-curly-spacing': 'error',
+        'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
+        'generator-star-spacing': 'off',
+
+        ...overrides
+      }
     },
     {
       files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
       name: 'shishuaiyun:scripts-overrides',
       rules: {
-        'no-console': 'off',
-      },
-    },
+        'no-console': 'off'
+      }
+    }
   ]
 }
