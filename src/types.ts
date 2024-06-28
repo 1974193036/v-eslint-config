@@ -128,7 +128,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default auto-detect based on the dependencies
    */
-  vue?: boolean
+  vue?: boolean | OptionsVueVersion
 
   /**
    * Enable JSONC support.
@@ -178,4 +178,12 @@ export interface OptionsIsInEditor {
 
 export interface OptionsOverrides {
   overrides?: ConfigItem['rules']
+}
+
+export interface OptionsHasTypeScript {
+  typescript?: boolean
+}
+
+export interface OptionsVueVersion {
+  vueVersion?: 2 | 3
 }

@@ -1,8 +1,20 @@
 import fs from 'node:fs'
-import { isPackageExists, getPackageInfo } from 'local-pkg'
+import { isPackageExists } from 'local-pkg'
 import gitignore from 'eslint-config-flat-gitignore'
 import type { ConfigItem, OptionsConfig } from './types'
-import { ignores, javascript, comments, node, jsdoc, imports, unicorn, perfectionist } from './configs'
+import {
+  ignores,
+  javascript,
+  comments,
+  node,
+  jsdoc,
+  imports,
+  unicorn,
+  perfectionist,
+  typescript,
+  test,
+  vue
+} from './configs'
 import { combine } from './utils'
 
 const VuePackages = ['vue', 'nuxt', 'vitepress', '@slidev/cli']
@@ -46,13 +58,38 @@ export function beauty(
     imports(),
     unicorn(),
     // Optional plugins (installed but not enabled by default)
-    perfectionist(),
+    perfectionist()
   )
 
-  const merged = combine(
-    ...configs,
-    ...userConfigs,
-  )
+  if (enableVue) componentExts.push('vue')
+
+  if (enableTypeScript) {
+    configs.push(
+      typescript({
+        ...(typeof enableTypeScript !== 'boolean' ? enableTypeScript : {}),
+        componentExts,
+        overrides: overrides.typescript
+      })
+    )
+  }
+
+  if (options.test ?? true) {
+    configs.push(test({
+      isInEditor,
+      overrides: overrides.test,
+    }))
+  }
+
+
+  if (enableVue) {
+    configs.push(vue({
+      overrides: overrides.vue,
+      typescript: !!enableTypeScript,
+      ...(typeof enableVue !== 'boolean' ? enableVue : {}), // { vueVersion?: 2 | 3 }
+    }))
+  }
+
+  const merged = combine(...configs, ...userConfigs)
 
   console.log('merged', merged)
 

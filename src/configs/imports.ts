@@ -1,5 +1,6 @@
 import type { ConfigItem } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
+import { GLOB_SRC_EXT } from '../globs'
 
 export function imports(): ConfigItem[] {
   return [
