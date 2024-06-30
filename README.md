@@ -28,9 +28,9 @@ export default beauty({})
 
 ```js
 // eslint.config.js
-const antfu = require('@shishuaiyun/eslint-config').default
+const beauty = require('@shishuaiyun/eslint-config').default
 
-module.exports = antfu()
+module.exports = beauty()
 ```
 
 ### Config Options
