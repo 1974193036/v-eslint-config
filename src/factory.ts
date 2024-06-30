@@ -19,11 +19,22 @@ import {
   sortTsconfig,
   yaml,
   markdown,
-  vueJsx,
+  vueJsx
 } from './configs'
 import { combine } from './utils'
 
 const VuePackages = ['vue', 'nuxt', 'vitepress', '@slidev/cli']
+
+const flatConfigProps: (keyof ConfigItem)[] = [
+  'files',
+  'ignores',
+  'languageOptions',
+  'linterOptions',
+  'processor',
+  'plugins',
+  'rules',
+  'settings'
+]
 
 export function beauty(
   options: OptionsConfig & ConfigItem = {},
@@ -129,6 +140,14 @@ export function beauty(
    * vueJsx for prettier
    */
   if (options.vueJsx) configs.push(vueJsx())
+
+  const fusedConfig = flatConfigProps.reduce((acc, key) => {
+    if (key in options) acc[key] = options[key] as any
+    return acc
+  }, {} as ConfigItem)
+  if (Object.keys(fusedConfig).length) {
+    configs.push([fusedConfig])
+  }
 
   const merged = combine(...configs, ...userConfigs)
 
