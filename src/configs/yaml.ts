@@ -1,12 +1,14 @@
-import type { ConfigItem, OptionsOverrides } from '../types'
+import type { ConfigItem, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_YAML } from '../globs'
 import { parserYaml, pluginYaml } from '../plugins'
 
-export function yaml(options: OptionsOverrides = {}): ConfigItem[] {
-  const { overrides = {} } = options
+export function yaml(
+  options: OptionsStylistic & OptionsOverrides = {}
+): ConfigItem[] {
+  const { overrides = {}, stylistic = true } = options
 
-  const indent: number | string = 2
-  const quotes = 'single'
+  const { indent = 2, quotes = 'single' } =
+    typeof stylistic === 'boolean' ? {} : stylistic
 
   return [
     {
@@ -33,17 +35,21 @@ export function yaml(options: OptionsOverrides = {}): ConfigItem[] {
 
         'yaml/vue-custom-block/no-parsing-error': 'error',
 
-        'yaml/block-mapping-question-indicator-newline': 'error',
-        'yaml/block-sequence-hyphen-indicator-newline': 'error',
-        'yaml/flow-mapping-curly-newline': 'error',
-        'yaml/flow-mapping-curly-spacing': 'error',
-        'yaml/flow-sequence-bracket-newline': 'error',
-        'yaml/flow-sequence-bracket-spacing': 'error',
-        'yaml/indent': ['error', (typeof indent === 'string' && indent === 'tab') ? 2 : indent],
-        'yaml/key-spacing': 'error',
-        'yaml/no-tab-indent': 'error',
-        'yaml/quotes': ['error', { avoidEscape: false, prefer: quotes }],
-        'yaml/spaced-comment': 'error',
+        ...(stylistic
+          ? {
+              'yaml/block-mapping-question-indicator-newline': 'error',
+              'yaml/block-sequence-hyphen-indicator-newline': 'error',
+              'yaml/flow-mapping-curly-newline': 'error',
+              'yaml/flow-mapping-curly-spacing': 'error',
+              'yaml/flow-sequence-bracket-newline': 'error',
+              'yaml/flow-sequence-bracket-spacing': 'error',
+              'yaml/indent': ['error', indent === 'tab' ? 2 : indent],
+              'yaml/key-spacing': 'error',
+              'yaml/no-tab-indent': 'error',
+              'yaml/quotes': ['error', { avoidEscape: false, prefer: quotes }],
+              'yaml/spaced-comment': 'error'
+            }
+          : {}),
 
         ...overrides
       }

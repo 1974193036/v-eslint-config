@@ -152,6 +152,12 @@ export interface OptionsConfig extends OptionsComponentExts {
   markdown?: boolean
 
   /**
+   * Enable stylistic rules.
+   *
+   * @default true
+   */
+  stylistic?: boolean | StylisticConfig
+  /**
    * Control to disable some rules in editors.
    * @default auto-detect based on the process.env
    */
@@ -186,4 +192,14 @@ export interface OptionsHasTypeScript {
 
 export interface OptionsVueVersion {
   vueVersion?: 2 | 3
+}
+
+export interface OptionsStylistic {
+  stylistic?: boolean | StylisticConfig
+}
+
+export interface StylisticConfig {
+  indent?: number | 'tab'
+  quotes?: 'single' | 'double'
+  jsx?: boolean
 }

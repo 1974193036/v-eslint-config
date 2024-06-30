@@ -1,7 +1,9 @@
-import type { ConfigItem } from '../types'
+import type { ConfigItem, OptionsStylistic } from '../types'
 import { pluginJsdoc } from '../plugins'
 
-export function jsdoc(): ConfigItem[] {
+export function jsdoc(options: OptionsStylistic = {}): ConfigItem[] {
+  const { stylistic = true } = options
+
   return [
     {
       name: 'shishuaiyun:jsdoc',
@@ -24,8 +26,13 @@ export function jsdoc(): ConfigItem[] {
         'jsdoc/require-returns-check': 'warn',
         'jsdoc/require-returns-description': 'warn',
         'jsdoc/require-yields-check': 'warn',
-        'jsdoc/check-alignment': 'warn',
-        'jsdoc/multiline-blocks': 'warn'
+
+        ...(stylistic
+          ? {
+              'jsdoc/check-alignment': 'warn',
+              'jsdoc/multiline-blocks': 'warn'
+            }
+          : {})
       }
     }
   ]

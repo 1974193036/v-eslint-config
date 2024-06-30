@@ -19,7 +19,8 @@ import {
   sortTsconfig,
   yaml,
   markdown,
-  vueJsx
+  vueJsx,
+  stylistic
 } from './configs'
 import { combine } from './utils'
 
@@ -52,6 +53,15 @@ export function beauty(
     vue: enableVue = VuePackages.some(i => isPackageExists(i))
   } = options
 
+  const stylisticOptions =
+    options.stylistic === false
+      ? false
+      : typeof options.stylistic === 'object'
+        ? options.stylistic
+        : {}
+  if (stylisticOptions && !('jsx' in stylisticOptions))
+    stylisticOptions.jsx = options.jsx ?? true
+
   const configs: ConfigItem[][] = []
 
   if (enableGitignore) {
@@ -71,8 +81,12 @@ export function beauty(
     }),
     comments(),
     node(),
-    jsdoc(),
-    imports(),
+    jsdoc({
+      stylistic: stylisticOptions
+    }),
+    imports({
+      stylistic: stylisticOptions
+    }),
     unicorn(),
     // Optional plugins (installed but not enabled by default)
     perfectionist()
@@ -90,6 +104,8 @@ export function beauty(
     )
   }
 
+  // if (stylisticOptions) configs.push(stylistic(stylisticOptions))
+
   if (options.test ?? true) {
     configs.push(
       test({
@@ -104,6 +120,7 @@ export function beauty(
       vue({
         overrides: overrides.vue,
         typescript: !!enableTypeScript,
+        stylistic: stylisticOptions,
         ...(typeof enableVue !== 'boolean' ? enableVue : {}) // { vueVersion?: 2 | 3 }
       })
     )
@@ -112,7 +129,8 @@ export function beauty(
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
-        overrides: overrides.jsonc
+        overrides: overrides.jsonc,
+        stylistic: stylisticOptions
       }),
       sortPackageJson(),
       sortTsconfig()
@@ -122,7 +140,8 @@ export function beauty(
   if (options.yaml ?? true) {
     configs.push(
       yaml({
-        overrides: overrides.yaml
+        overrides: overrides.yaml,
+        stylistic: stylisticOptions
       })
     )
   }
@@ -151,7 +170,7 @@ export function beauty(
 
   const merged = combine(...configs, ...userConfigs)
 
-  console.log('merged', merged)
+  // console.log('merged', merged)
 
   return merged
 }

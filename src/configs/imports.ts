@@ -1,7 +1,9 @@
-import type { ConfigItem } from '../types'
+import type { ConfigItem, OptionsStylistic } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
 
-export function imports(): ConfigItem[] {
+export function imports(options: OptionsStylistic = {}): ConfigItem[] {
+  const { stylistic = true } = options
+
   return [
     {
       name: 'shishuaiyun:imports',
@@ -21,7 +23,14 @@ export function imports(): ConfigItem[] {
         'import/no-webpack-loader-syntax': 'error',
         'import/order': 'error',
 
-        'import/newline-after-import': ['error', { considerComments: true, count: 1 }],
+        ...(stylistic
+          ? {
+              'import/newline-after-import': [
+                'error',
+                { considerComments: true, count: 1 }
+              ]
+            }
+          : {})
       }
     }
   ]

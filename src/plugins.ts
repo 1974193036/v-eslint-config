@@ -16,6 +16,7 @@ export * as pluginYaml from 'eslint-plugin-yml'
 export { default as pluginMarkdown } from 'eslint-plugin-markdown'
 export * as configPrettier from 'eslint-config-prettier'
 export { default as pluginPrettier } from 'eslint-plugin-prettier'
+export { default as pluginStylistic } from '@stylistic/eslint-plugin'
 
 export { default as pluginNoOnlyTests } from 'eslint-plugin-no-only-tests'
 export { default as pluginVitest } from 'eslint-plugin-vitest'
