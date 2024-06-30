@@ -15,6 +15,8 @@ export const GLOB_JSON = '**/*.json'
 export const GLOB_JSON5 = '**/*.json5'
 export const GLOB_JSONC = '**/*.jsonc'
 
+export const GLOB_YAML = '**/*.y?(a)ml'
+
 export const GLOB_EXCLUDE = [
   '**/node_modules',
   '**/dist',

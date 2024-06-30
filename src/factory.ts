@@ -16,7 +16,8 @@ import {
   vue,
   jsonc,
   sortPackageJson,
-  sortTsconfig
+  sortTsconfig,
+  yaml
 } from './configs'
 import { combine } from './utils'
 
@@ -100,6 +101,12 @@ export function beauty(
       sortPackageJson(),
       sortTsconfig(),
     )
+  }
+
+  if (options.yaml ?? true) {
+    configs.push(yaml({
+      overrides: overrides.yaml
+    }))
   }
 
   const merged = combine(...configs, ...userConfigs)
