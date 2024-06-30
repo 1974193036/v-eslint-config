@@ -1,4 +1,4 @@
-# @shishuaiyunstjs/eslint-config
+# @shishuaiyun/eslint-config
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone without Prettier)
@@ -20,7 +20,7 @@ pnpm add -D @shishuaiyun/eslint-config
 ### ESM
 
 ```js
-import beauty from '@shishuaiyunstjs/eslint-config'
+import beauty from '@shishuaiyun/eslint-config'
 export default beauty({})
 ```
 
@@ -36,7 +36,7 @@ module.exports = antfu()
 ### Config Options
 
 ```js
-import beauty from '@shishuaiyunstjs/eslint-config'
+import beauty from '@shishuaiyun/eslint-config'
 export default beauty({
   vue: true,
   typescript: true,
