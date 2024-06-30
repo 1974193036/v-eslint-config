@@ -13,7 +13,10 @@ import {
   perfectionist,
   typescript,
   test,
-  vue
+  vue,
+  jsonc,
+  sortPackageJson,
+  sortTsconfig
 } from './configs'
 import { combine } from './utils'
 
@@ -87,6 +90,16 @@ export function beauty(
       typescript: !!enableTypeScript,
       ...(typeof enableVue !== 'boolean' ? enableVue : {}), // { vueVersion?: 2 | 3 }
     }))
+  }
+
+  if (options.jsonc ?? true) {
+    configs.push(
+      jsonc({
+        overrides: overrides.jsonc,
+      }),
+      sortPackageJson(),
+      sortTsconfig(),
+    )
   }
 
   const merged = combine(...configs, ...userConfigs)

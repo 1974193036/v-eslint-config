@@ -11,6 +11,7 @@ export { default as pluginUnicorn } from 'eslint-plugin-unicorn'
 export { default as pluginPerfectionist } from 'eslint-plugin-perfectionist'
 export { default as pluginTs } from '@typescript-eslint/eslint-plugin'
 export { default as pluginVue } from 'eslint-plugin-vue'
+export * as pluginJsonc from 'eslint-plugin-jsonc'
 
 export { default as pluginNoOnlyTests } from 'eslint-plugin-no-only-tests'
 export { default as pluginVitest } from 'eslint-plugin-vitest'
@@ -19,3 +20,4 @@ export { default as pluginVitest } from 'eslint-plugin-vitest'
 
 export * as parserTs from '@typescript-eslint/parser'
 export { default as parserVue } from 'vue-eslint-parser'
+export { default as parserJsonc } from 'jsonc-eslint-parser'

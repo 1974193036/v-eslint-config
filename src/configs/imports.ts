@@ -1,6 +1,5 @@
 import type { ConfigItem } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
-import { GLOB_SRC_EXT } from '../globs'
 
 export function imports(): ConfigItem[] {
   return [
@@ -20,7 +19,9 @@ export function imports(): ConfigItem[] {
         'import/no-named-default': 'error',
         'import/no-self-import': 'error',
         'import/no-webpack-loader-syntax': 'error',
-        'import/order': 'error'
+        'import/order': 'error',
+
+        'import/newline-after-import': ['error', { considerComments: true, count: 1 }],
       }
     }
   ]
