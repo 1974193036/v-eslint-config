@@ -18,7 +18,8 @@ import {
   sortPackageJson,
   sortTsconfig,
   yaml,
-  markdown
+  markdown,
+  vueJsx,
 } from './configs'
 import { combine } from './utils'
 
@@ -79,43 +80,55 @@ export function beauty(
   }
 
   if (options.test ?? true) {
-    configs.push(test({
-      isInEditor,
-      overrides: overrides.test,
-    }))
+    configs.push(
+      test({
+        isInEditor,
+        overrides: overrides.test
+      })
+    )
   }
 
-
   if (enableVue) {
-    configs.push(vue({
-      overrides: overrides.vue,
-      typescript: !!enableTypeScript,
-      ...(typeof enableVue !== 'boolean' ? enableVue : {}), // { vueVersion?: 2 | 3 }
-    }))
+    configs.push(
+      vue({
+        overrides: overrides.vue,
+        typescript: !!enableTypeScript,
+        ...(typeof enableVue !== 'boolean' ? enableVue : {}) // { vueVersion?: 2 | 3 }
+      })
+    )
   }
 
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
-        overrides: overrides.jsonc,
+        overrides: overrides.jsonc
       }),
       sortPackageJson(),
-      sortTsconfig(),
+      sortTsconfig()
     )
   }
 
   if (options.yaml ?? true) {
-    configs.push(yaml({
-      overrides: overrides.yaml
-    }))
+    configs.push(
+      yaml({
+        overrides: overrides.yaml
+      })
+    )
   }
 
   if (options.markdown ?? true) {
-    configs.push(markdown({
-      componentExts,
-      overrides: overrides.markdown,
-    }))
+    configs.push(
+      markdown({
+        componentExts,
+        overrides: overrides.markdown
+      })
+    )
   }
+
+  /**
+   * vueJsx for prettier
+   */
+  if (options.vueJsx) configs.push(vueJsx())
 
   const merged = combine(...configs, ...userConfigs)
 
