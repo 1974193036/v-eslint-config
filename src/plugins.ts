@@ -13,6 +13,7 @@ export { default as pluginTs } from '@typescript-eslint/eslint-plugin'
 export { default as pluginVue } from 'eslint-plugin-vue'
 export * as pluginJsonc from 'eslint-plugin-jsonc'
 export * as pluginYaml from 'eslint-plugin-yml'
+export { default as pluginMarkdown } from 'eslint-plugin-markdown'
 
 export { default as pluginNoOnlyTests } from 'eslint-plugin-no-only-tests'
 export { default as pluginVitest } from 'eslint-plugin-vitest'

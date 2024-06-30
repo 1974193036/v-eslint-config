@@ -17,7 +17,8 @@ import {
   jsonc,
   sortPackageJson,
   sortTsconfig,
-  yaml
+  yaml,
+  markdown
 } from './configs'
 import { combine } from './utils'
 
@@ -106,6 +107,13 @@ export function beauty(
   if (options.yaml ?? true) {
     configs.push(yaml({
       overrides: overrides.yaml
+    }))
+  }
+
+  if (options.markdown ?? true) {
+    configs.push(markdown({
+      componentExts,
+      overrides: overrides.markdown,
     }))
   }
 
