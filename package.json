@@ -1,7 +1,7 @@
 {
   "name": "@shishuaiyun/eslint-config",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "",
   "exports": {
     ".": {
@@ -26,13 +26,13 @@
   "dependencies": {
     "@antfu/eslint-define-config": "1.23.0-2",
     "@stylistic/eslint-plugin": "^1.5.1",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.14.1",
     "eslint-config-flat-gitignore": "^0.1.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-antfu": "^2.0.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-i": "^2.29.1",
+    "eslint-plugin-import-x": "^0.5.2",
     "eslint-plugin-jsdoc": "^46.9.1",
     "eslint-plugin-jsonc": "^2.11.1",
     "eslint-plugin-markdown": "^3.0.1",

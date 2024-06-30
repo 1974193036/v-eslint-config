@@ -9,10 +9,13 @@
 
 ## Usage
 
-### version
-node > 16
+### node version && eslint version
 
-eslint > 8 & eslint < 9
+if node > 16 & node < 18, please use eslint 8.xx
+
+if node >= 18, eslint 8 or eslint 9， Everything is ok
+
+
 
 ### Install
 
