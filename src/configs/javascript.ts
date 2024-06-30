@@ -249,38 +249,17 @@ export function javascript(
         yoda: ['error', 'never'],
 
         // best-practice
-        semi: ['error', 'never'],
-        quotes: ['error', 'single'],
         'consistent-return': 'off',
         complexity: ['off', 11],
-        'no-multi-spaces': 'error',
         'no-void': 'error',
         'no-useless-escape': 'off',
         'require-await': 'off',
         'no-return-assign': 'off',
-        'operator-linebreak': ['error', 'before'],
-        'quote-props': ['error', 'consistent-as-needed'],
         'no-param-reassign': 'off',
-        'array-bracket-spacing': ['error', 'never'],
-        'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-        'block-spacing': ['error', 'always'],
         camelcase: 'off',
-        'comma-spacing': ['error', { before: false, after: true }],
-        'comma-style': ['error', 'last'],
-        'comma-dangle': ['error', 'always-multiline'],
         'no-constant-condition': 'warn',
         'func-call-spacing': ['off', 'never'],
-        'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-        indent: [
-          'error',
-          2,
-          { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }
-        ],
-        'object-curly-spacing': ['error', 'always'],
         'no-return-await': 'off',
-        'space-before-function-paren': ['error', 'never'],
-        'template-curly-spacing': 'error',
-        'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
         'generator-star-spacing': 'off',
 
         ...overrides
