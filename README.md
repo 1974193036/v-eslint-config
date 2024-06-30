@@ -9,6 +9,11 @@
 
 ## Usage
 
+### version
+node > 16
+
+eslint > 8 & eslint < 9
+
 ### Install
 
 ```bash
@@ -38,10 +43,18 @@ module.exports = beauty()
 ```js
 import beauty from '@shishuaiyun/eslint-config'
 export default beauty({
-  vue: true,
+  vue: true, // default vueVersion is 3
+  // vue2
+  // vue: {
+  //   vueVersion: 2
+  // },
   typescript: true,
   gitignore: true,
   markdown: true,
+  stylistic: {
+    indent: 2, // 4, or 'tab'
+    quotes: 'single', // or 'double'
+  },
   ignores: [
     'types/auto-imports.d.ts',
     'types/components.d.ts',
@@ -65,7 +78,8 @@ For example:
 ```json
 {
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }
 ```
@@ -119,3 +133,6 @@ Create `.vscode/settings.json`
   ]
 }
 ```
+
+### future plan
+add react lint
