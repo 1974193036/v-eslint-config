@@ -15,7 +15,10 @@ if node > 16 & node < 18, please use eslint 8.xx
 
 if node >= 18, eslint 8 or eslint 9， Everything is ok
 
+The `eslint` package does not need to be installed separately.
+Because '@shishuaiyun/eslint-config' installs eslint automatically in our project based on peerDependencies
 
+Of course, you can also manually install the version specified 'eslint' according to the version rules above
 
 ### Install
 
