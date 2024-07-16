@@ -33,8 +33,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(eslint@8.56.0)
       eslint-plugin-import-x:
-        specifier: ^0.5.2
-        version: 0.5.2(eslint@8.56.0)(typescript@5.3.3)
+        specifier: ^3.0.1
+        version: 3.0.1(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-jsdoc:
         specifier: ^46.9.1
         version: 46.9.1(eslint@8.56.0)
@@ -788,6 +788,10 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@rtsao/scc@1.1.0:
+    resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
+    dev: false
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -1679,12 +1683,13 @@ packages:
       ignore: 5.3.1
     dev: false
 
-  /eslint-plugin-import-x@0.5.2(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-6f1YMmg3PdLwfiJDYnCRPfh67zJKbwbOKL99l6xGZDmIFkMht/4xyudafGEcDOmDlgp36e41W4RXDfOn7+pGRg==}
+  /eslint-plugin-import-x@3.0.1(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-jzQgJuE4ssxwNi0aMBkOL8whd4eHb0Z/uFWsk8uEoYB7xwTkAptSKojLzRswxgf/1bhH6QgcLjgabUBQqluBIg==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: ^8.56.0 || ^9.0.0-0
     dependencies:
+      '@rtsao/scc': 1.1.0
       '@typescript-eslint/utils': 7.14.1(eslint@8.56.0)(typescript@5.3.3)
       debug: 4.3.5
       doctrine: 3.0.0
@@ -1694,6 +1699,7 @@ packages:
       is-glob: 4.0.3
       minimatch: 9.0.5
       semver: 7.6.2
+      stable-hash: 0.0.4
       tslib: 2.6.3
     transitivePeerDependencies:
       - supports-color
@@ -3155,6 +3161,10 @@ packages:
 
   /spdx-license-ids@3.0.18:
     resolution: {integrity: sha512-xxRs31BqRYHwiMzudOrpSiHtZ8i/GeionCBDSilhYRj+9gIcI8wCZTlXZKu9vZIVqViP3dcp9qE5G6AlIaD+TQ==}
+    dev: false
+
+  /stable-hash@0.0.4:
+    resolution: {integrity: sha512-LjdcbuBeLcdETCrPn9i8AYAZ1eCtu4ECAWtP7UleOiZ9LzVxRzzUZEoZ8zB24nhkQnDWyET0I+3sWokSDS3E7g==}
     dev: false
 
   /stackback@0.0.2:
